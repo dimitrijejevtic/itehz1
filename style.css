@@ -1,0 +1,91 @@
+.section1{		
+		height:100%;
+		
+}
+.section2{
+		background-color:#b7eb98;
+		height:100%
+}
+.section3{
+		background-color:#8fd8f3;
+		height:100%
+}
+.container {
+	width:70%;
+	height:700px;
+	background-color:FBFFE8;
+}
+.slide1{
+	background:url("img/wp1.jpg");
+	background-size:cover;
+}
+.slide2{
+	background:url("img/wp2.jpg");
+	background-size:cover;
+}
+h1 {
+	font-size:60px;
+	text-align:center;
+	color:white;
+	text-shadow: 0 1px 0 #ccc,
+               0 2px 0 #c9c9c9,
+               0 3px 0 #bbb,
+               0 4px 0 #b9b9b9,
+               0 5px 0 #aaa,
+               0 6px 1px rgba(0,0,0,.1),
+               0 0 5px rgba(0,0,0,.1),
+               0 1px 3px rgba(0,0,0,.3),
+               0 3px 5px rgba(0,0,0,.2),
+               0 5px 10px rgba(0,0,0,.25),
+               0 10px 10px rgba(0,0,0,.2),
+               0 20px 20px rgba(0,0,0,.15);
+}
+h1.dota{
+	display: block;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	float: none;
+	z-index: auto;
+	width: auto;
+	height: auto;
+	position: static;
+	content: ;
+	cursor: default;
+	opacity: 1;
+	top: auto;
+	right: auto;
+	bottom: auto;
+	left: auto;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	outline: none;
+	border: 0 solid rgba(0,0,0,1);
+	-webkit-border-radius: 0;
+	border-radius: 0;
+	font: normal normal 900 70px/normal "Aldrich", Helvetica, sans-serif;
+	color: rgb(32, 44, 45);
+	text-decoration: none;
+	text-align: center;
+	text-transform: none;
+	text-indent: 0;
+	-o-text-overflow: clip;
+	text-overflow: clip;
+	letter-spacing: 0;
+	white-space: normal;
+	word-spacing: 0;
+	word-wrap: ;
+	background: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	text-shadow: 0 1px 0 rgb(128,141,147) , -1px 0 0 rgb(205,210,213) , -1px 2px 0 rgb(128,141,147) , -2px 1px 0 rgb(205,210,213) , -2px 3px 0 rgb(128,141,147) , -3px 2px 0 rgb(205,210,213) , -3px 4px 0 rgb(128,141,147) , -4px 3px 0 rgb(205,210,213) , -4px 5px 0 rgb(128,141,147) , -5px 4px 0 rgb(205,210,213) , -5px 6px 0 rgb(128,141,147) , -6px 5px 0 rgb(205,210,213) , -6px 7px 0 rgb(128,141,147) , -7px 6px 0 rgb(205,210,213) , -7px 8px 0 rgb(128,141,147) , -8px 7px 0 rgb(205,210,213);
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+	-webkit-transform: scaleX(1) scaleY(1) scaleZ(1);
+	transform: scaleX(1) scaleY(1) scaleZ(1);
+	-webkit-transform-origin: 50% 50% 0;
+	transform-origin: 50% 50% 0;
+}
