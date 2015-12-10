@@ -61,6 +61,62 @@ $(document).on("click","a.cancel_s_d_skill",function(){
 	$("#dsi"+ind).remove();
 	$(".cancel_s_d_skill").remove();
 });
+$(".add_skill").click(function(){
+		$(".new_skill_container").css('display','initial')
+	});
+$(".cancel_add").click(function(){
+		$(".new_skill_container").css('display','none');
+	});
+$(".edit_link").click(function(){
+	var index=($(this).attr("id")).substring(5);
+	var skillname=$("#n"+index).text();
+	var skillvalue=$("#v"+index).text();
+	$("#n"+index).empty();
+	$("#v"+index).empty();
+	$("#n"+index).append("<input type=\"text\" name=\"SkillName\" id=\"SkillName"+index+"\" value="+skillname+">");
+	$("#v"+index).append("<input type=\"text\" name=\"SkillValue\" id=\"SkillValue"+index+"\"value="+skillvalue+">").append("<a href=\"#\" onclick=\"saveedit(this)\" class=\"save_edit\" id=\"se"+index+"\">Save</a>");
+});
+$(".delete_link").click(function(){
+		var valuef = ($(this).attr("id")).substring(7);
+		var table_row=$(this);
+		$.get("delete.php",{id:valuef},
+		function(data){
+			if(data == 'GJx2'){
+				$(table_row).parent().parent().remove();
+			}
+		});
+	});
+$("#searchBox").bind('input',function(){
+	$("#suggest").empty();
+	$(".suggestions").css('display','none');
+	var text=$(this).val();
+	$.get("search.php",{searched:text},function(data){
+		if(data=="empty"||data=="Nothing transfered"){
+			$("#suggest").append("<li><a href=\"#\">No matching words</a></li>");
+			$(".suggestions").css('display','initial');
+		}else{
+			$(".suggestions").css('display','initial');
+			var obj=$.parseJSON(data);
+			for(var i=0;i<obj.length;i++){
+				$("#suggest").append("<li><a href=\"#\" onclick=\"transfer(this)\">"+obj[i]+"</a></li>");
+			}			
+		}
+	});
+	});
+	$("#searchButton").click(function(){
+		$.get("search2.php",{"text":$("#searchBox").val()},function(data){
+			if(data=="empty"){
+				$(".result-table").css('display','initial');
+				$("#results-row").append("<td colspan=\"2\">No results</td>");				
+			}else {
+				var res=$.parseJSON(data);
+				for(var i=0;i<res.length;i++){
+					$(".result-table").css('display','initial');
+					$("#results-row").parent().append("<tr><td>"+res[i].SetName+"</td><td>"+res[i].SetValue+"</td></tr>");
+				}
+			}
+		});
+});
 });
 function updatedskill(elem){
 	var ind=elem.id.substring(3);
@@ -80,4 +136,27 @@ function updatedskill(elem){
 			});
 		});
 	}
+}
+function saveedit(elem){	
+	var ind=elem.id.substring(2);
+	var SN=document.getElementById("SkillName"+ind).value;
+	var SV=document.getElementById("SkillValue"+ind).value;		
+	$(document).ready(function(){
+		$.get("editSkill.php",{index:ind,skillName:SN,skillValue:SV}, function(data){
+			if(data=="Updated"){
+				var td=$("#SkillName"+ind).parent();
+				$("#SkillName"+ind).remove();
+				td.append(SN);
+				var td2=$("#SkillValue"+ind).parent();
+				$("#SkillValue"+ind).remove();
+				td2.append(SV);
+				$(".save_edit").remove();
+			}
+		});
+	});
+};
+function transfer(elem){
+	var val=elem.text;
+	document.getElementById("searchBox").value=val;
+	$(".suggestions").css('display','none');
 }

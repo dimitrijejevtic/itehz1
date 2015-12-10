@@ -3,24 +3,34 @@
 <head>
 <title>Edit values</title>
 <script type="text/javascript" src="jquery-1.11.3.min.js" ></script>
-<script type="text/javascript" src="deleteR.js"></script>
-<script type="text/javascript" src="saveedit.js"></script>
-<script type="text/javascript" src="addSkill.js"></script>
 <script type="text/javascript" src="crud.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="edit.css">
+
 </head>
 <body>
-<h2>Skills</h2>
+<div class="container">
+<div class="row">
+<h2 class="col-md-8 col-xs-6">Skills</h2>
+<form>
+<input type="text" name="searchval" class="form-control col-md-3 col-xs-3" id="searchBox" placeholder="Search..." style="width:200px;margin-top:20px;">
+<button id="searchButton" class="btn btn-default col-md-1 col-xs-1" type="button" style="margin-top:20px;">Search</button>
+<ul class="suggestions" id="suggest"> 
+</ul>
+</form>
+</div>
 <?php
 include "connection.php";
-include "models.php";
 ?>
-<table id="ta">
+<table id="ta" class="table table-striped table-hover table-bordered">
 <tr>
 <td>Skill name</td>
 <td>Skill value</td>
 <td></td>
 </tr>
+<tbody>
 <?php
 $query="SELECT idSkills,SkillName,SkillValue FROM skills";
 $upit=$db->query($query);
@@ -48,16 +58,18 @@ if($upit->rowCount()==0){
 	<tr>
 	<td colspan="3"><a href="#" class="add_skill">Add new</a></td>
 	</tr>
+	</tbody>
 	</table>
 		<?php
 	?>
 <h2>Dota skills</h2>
-<table id="dskills">
+<table id="dskills" class="table table-hover table-bordered">
 	<tr>
 	<td>Skill name</td>
 	<td>Skill value</td>
 	<td></td>
 	</tr>
+	<tbody>
 	<?php 
 	$query="SELECT iddskills, dSkillName, dSkillValue FROM dskills";
 	$dres=$db->query($query);
@@ -82,6 +94,19 @@ if($upit->rowCount()==0){
 	<tr>
 	<td colspan="3"><a href="#" class="add_d_skill">Add new</a></td>
 	</tr>
+	</tbody>
 </table>
+<div class="result-table"> 
+<h2>Search results</h2>
+<table class="table table-striped table-hover table-bordered">
+<tr>
+<td>Name</td>
+<td>Value</td>
+</tr>
+<tr id="results-row">
+</tr>
+</table>
+</div>
+</div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 .section1{		
-		height:100%;
+		
 		
 }
 .section2{
@@ -7,20 +7,32 @@
 		height:100%
 }
 .section3{
+	
 		background-color:#8fd8f3;
-		height:100%
+		height:100%;
+		background:url("img/wp6.jpg");
+		background-size:cover;
 }
 .container {
 	width:70%;
 	height:700px;
 	background-color:FBFFE8;
+	margin-top:10px;
 }
 .slide1{
 	background:url("img/wp1.jpg");
 	background-size:cover;
 }
 .slide2{
-	background:url("img/wp2.jpg");
+	background:url("img/wp3.jpg");
+	background-size:cover;
+}
+.slide3{
+	background:url("img/wp4.jpg");
+	background-size:cover;
+}
+.slide4{
+	background:url("img/wp5.jpg");
 	background-size:cover;
 }
 h1 {
@@ -89,3 +101,70 @@ h1.dota{
 	-webkit-transform-origin: 50% 50% 0;
 	transform-origin: 50% 50% 0;
 }
+
+.glyphicon-envelope{
+	color:#E8A200;
+	font-size:24px;
+}
+.glyphicon-class{	
+	color:black;
+}
+p{
+	color:black;
+}
+.glyphicon-chevron-left{
+	color: #29B332;
+	font-size:36px;
+}
+ .glyphicon-chevron-right{
+	 color: #29B332;
+	 font-size:36px;
+ }
+ 
+ .glyphicon-briefcase{
+	 color:#D17600;
+	 font-size:24px;
+ }
+ .d2container-r{
+	flex:1;
+	width: 30%;
+	height:100%;
+	background-color:FBFFE8;
+	
+ }
+ .d2container-l{
+	 width:60%;
+	 height:700px; 
+	 background-color:FBFFE8;
+	 margin-right:20px;
+ }
+ .parent{
+	 display:flex;
+	 width:70%;
+	 margin:auto;
+ }
+ .d2canvas{
+	 margin: 0 auto;
+	 margin-top:10px;
+ }
+ .container-bars{
+	 height:initial !important;
+	 width:initial !important;
+	 
+ }
+ .container-d2table{
+	 height:initial !important;
+	 width:initial !important;
+	 
+ }
+ h4{
+	 text-align:center;
+ }
+ .details-container{
+	 text-align:center;
+	 height:100% !important;
+ }
+ .details{
+	 height:initial !important;
+	 width:200px !important;
+ }
