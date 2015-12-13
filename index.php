@@ -10,10 +10,9 @@
 <script type="text/javascript" src="jquery.slimscroll.min.js"></script>
 <script type="text/javascript" src="jquery.fullPage.min.js"></script>
 <link rel="stylesheet" type="text/css" href="style.css"/>
-<link rel="stylesheet" type="text/css" href="DataTables-1.10.10/media/css/jquery.dataTables.css">
-<script type="text/javascript" charset="utf8" src="DataTables-1.10.10/media/js/jquery.dataTables.js"></script>
 <script src="Chart.js"></script>
-<script type="text/javascript" src="Chart.Radar.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,af-2.1.0,b-1.1.0,b-html5-1.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/s/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,af-2.1.0,b-1.1.0,b-html5-1.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.js"></script><script type="text/javascript" src="Chart.Radar.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#fullpage").fullpage({
@@ -26,11 +25,17 @@ $(document).ready(function(){
 	});
 
 $("#skills").DataTable({
+	autoFill:true,
+	dom:'Bfrtip',
+	buttons:['copy','excel','pdf'],
+	colReorder: true,
+	keys: true,
+	select: true
 	});
 $("#dskills").DataTable({
 	"processing":true,
 	"serverSide":true,
-	"ajax":"server-d-index.php"
+	"ajax":"server-d-index.php"	
 });
 $(function(){
 	$('a[rel=ssbc]').popover({

@@ -23,6 +23,10 @@
 </div>
 <?php
 include "connection.php";
+error_reporting(E_ALL | E_STRICT);
+ini_set("display_errors",0);
+ini_set("log_errors",1);
+ini_set("error_log","logs.log");
 ?>
 <table id="ta" class="table table-striped table-hover table-bordered">
 <tr>
