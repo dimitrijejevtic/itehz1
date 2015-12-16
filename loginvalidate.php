@@ -9,13 +9,13 @@ if(isset ($_POST["log-in"])){
 		$query="INSERT INTO users (username, passhash) VALUES ('".$name."','".$password."')";
 		if(!$res=$db->exec($query)){
 			echo "Registered";
-			header("location:http://localhost/itehZad1/edit.php");
+			header("location:http://localhost/itehZad1/edit.php?login=confirmed");
 		} else {
 			 echo "sql Error";
 			header("location:http://localhost/itehZad1/login.php?error=1");
 		}
 	} else {
-		header("location:http://localhost/itehZad1/edit.php");	
+		header("location:http://localhost/itehZad1/edit.php?login=confirmed");	
 		$db=null;		
 		die();
 	}

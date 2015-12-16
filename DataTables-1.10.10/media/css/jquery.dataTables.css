@@ -14,9 +14,13 @@ table.dataTable {
    * Body styles
    */
 }
+table.dataTable thead{
+background-color: #FC8F00;
+}
 table.dataTable thead th,
 table.dataTable tfoot th {
   font-weight: bold;
+  background-color: #FC8F00;
 }
 table.dataTable thead th,
 table.dataTable thead td {

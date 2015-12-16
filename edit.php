@@ -22,6 +22,12 @@
 </form>
 </div>
 <?php
+if(isset ($_GET['login'])){
+	if(($_GET['login'])!="confirmed")
+		header("location:http://localhost/itehZad1/login.php?error=1");
+}else {
+	header("location:http://localhost/itehZad1/login.php?error=1");
+}
 include "connection.php";
 error_reporting(E_ALL | E_STRICT);
 ini_set("display_errors",0);

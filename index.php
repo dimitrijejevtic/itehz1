@@ -13,18 +13,22 @@
 <script src="Chart.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,af-2.1.0,b-1.1.0,b-html5-1.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.css"/>
 <script type="text/javascript" src="https://cdn.datatables.net/s/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,af-2.1.0,b-1.1.0,b-html5-1.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.js"></script><script type="text/javascript" src="Chart.Radar.js"></script>
-<script type="text/javascript">
+<link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
+<link rel="stylesheet" type="text/css"  href="DataTables-1.10.10/media/css/dataTables.bootstrap.css"/>
+<script type="text/javascript" src="DataTables-1.10.10/media/js/dataTables.bootstrap.js"></script>
+<script>
 $(document).ready(function(){
 	$("#fullpage").fullpage({
 		slidesNavigation:true,
 		navigation:true,
 		sectionSelector: '.section',
         slideSelector: '.slide',
-		loopHorizontal: false,
-		verticalCentered: true
 	});
 
 $("#skills").DataTable({
+	"language":{
+		"url":"//cdn.datatables.net/plug-ins/1.10.10/i18n/Russian.json"
+	},
 	autoFill:true,
 	dom:'Bfrtip',
 	buttons:['copy','excel','pdf'],
@@ -191,7 +195,7 @@ var myChart= new Chart(ctx).Radar(d2data,{});
 		<div id="l2" class="slide slide3" data-anchor="slide3">
 			<div>
 				<div class="container">
-					<table id="skills" class="display">
+					<table id="skills" class="display table table-striped table-bordered" cellspacing="0">
 						<thead>
 						<tr>
 							<th>no.</th>
