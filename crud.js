@@ -9,7 +9,8 @@ $(document).ready(function(){
 		//handle adding TR
 		$.get("crud.php",{skillName:skillname,skillValue:skillval},function(data){
 			if(data=="Success"){
-				$(".last_row").append("<td>"+skillname+"</td><td>"+skillval+"</td>");
+				$(".last_row").before("<tr><td>"+skillname+"</td><td>"+skillval+"</td></tr>");
+				$(".last_row").empty();
 			}
 		});
 	});

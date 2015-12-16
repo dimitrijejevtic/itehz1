@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
 <link rel="stylesheet" type="text/css"  href="DataTables-1.10.10/media/css/dataTables.bootstrap.css"/>
 <script type="text/javascript" src="DataTables-1.10.10/media/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>
 <script>
 $(document).ready(function(){
 	$("#fullpage").fullpage({
@@ -24,7 +25,6 @@ $(document).ready(function(){
 		sectionSelector: '.section',
         slideSelector: '.slide',
 	});
-
 $("#skills").DataTable({
 	"language":{
 		"url":"//cdn.datatables.net/plug-ins/1.10.10/i18n/Russian.json"
@@ -39,7 +39,15 @@ $("#skills").DataTable({
 $("#dskills").DataTable({
 	"processing":true,
 	"serverSide":true,
-	"ajax":"server-d-index.php"	
+	"ajax":"server-d-index.php",
+	"drawCallback":function (){
+		$("#dskills tbody td").editable('http://localhost/itehZad1/jedit.php',{
+			"callback":function (sValue,y){
+				oTable.fnDraw();
+			},
+			"height":"14px"
+		});
+	}
 });
 $(function(){
 	$('a[rel=ssbc]').popover({
