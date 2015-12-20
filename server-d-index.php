@@ -4,8 +4,9 @@ $table="dskills";
 $primaryKey="iddskills";
 
 $columns=array(
-	array('db'=>'dSkillName','dt'=>0),
-	array('db'=>'dSkillValue','dt'=>1));
+	array('db'=>'iddskills','dt'=>0),
+	array('db'=>'dSkillName','dt'=>1),
+	array('db'=>'dSkillValue','dt'=>2));
 	
 $username="b3043476dc9bbc";
 $password="c70960bb";

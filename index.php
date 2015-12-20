@@ -12,11 +12,13 @@
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <script src="Chart.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/s/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,af-2.1.0,b-1.1.0,b-html5-1.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/s/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,af-2.1.0,b-1.1.0,b-html5-1.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.js"></script><script type="text/javascript" src="Chart.Radar.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/s/dt/jszip-2.5.0,pdfmake-0.1.18,dt-1.10.10,af-2.1.0,b-1.1.0,b-html5-1.1.0,kt-2.1.0,r-2.0.0,sc-1.4.0,se-1.1.0/datatables.min.js"></script>
+<script type="text/javascript" src="Chart.Radar.js"></script>
 <link rel="stylesheet" type="text/css" href="jquery.fullPage.css" />
 <link rel="stylesheet" type="text/css"  href="DataTables-1.10.10/media/css/dataTables.bootstrap.css"/>
 <script type="text/javascript" src="DataTables-1.10.10/media/js/dataTables.bootstrap.js"></script>
 <script type="text/javascript" src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>
+<script type="text/javascript" src="DataTables-1.10.10/extensions/editable/jquery.dataTables.editable.js"></script>
 <script>
 $(document).ready(function(){
 	$("#fullpage").fullpage({
@@ -36,18 +38,24 @@ $("#skills").DataTable({
 	keys: true,
 	select: true
 	});
-$("#dskills").DataTable({
+var selectedRowIndex=0;
+$("#btnDeleteRow").click(function(){
+	var id=$(".row_selected td").text();
+	selectedRowIndex=id.substring(0,2);
+	alert(selectedRowIndex);
+});
+var dtable=$("#dskills").dataTable({
+	"columns":[
+		{"title":"Id"},
+		{"title":"Skill"},
+		{"title":"value"}],
 	"processing":true,
 	"serverSide":true,
-	"ajax":"server-d-index.php",
-	"drawCallback":function (){
-		$("#dskills tbody td").editable('http://localhost/itehZad1/jedit.php',{
-			"callback":function (sValue,y){
-				oTable.fnDraw();
-			},
-			"height":"14px"
-		});
-	}
+	"ajax":"server-d-index.php"	
+}).makeEditable({
+	sDeleteURL:"jedit.php?action=delete?id="+selectedRowIndex,
+	sDeleteHttpMethod:"GET"
+	
 });
 $(function(){
 	$('a[rel=ssbc]').popover({
@@ -138,8 +146,24 @@ var d2data={
 	},]
 };
 var myChart= new Chart(ctx).Radar(d2data,{});
+$("#addrow").click(function(){
+	var skill=$("#dskillnamei").val();
+	var value=$("#dskillvaluei").val();
+	$.get("jedit.php?action=insert",{skillName:skill,skillValue:value},function(data){
+		if(data=="Success"){
+			dtable.row.add(['#',skill,value]).draw();
+		}
+	});
+	
+});
 });
 </script>
+<style>
+.row_selected td {
+    background-color: #d3d3d3 !important; /* Add !important to make sure override datables base styles */
+ }
+</style>
+
 </head>
 <body>
 <div id="fullpage" >
@@ -251,6 +275,7 @@ var myChart= new Chart(ctx).Radar(d2data,{});
 					<table id="dskills" class="display">
 						<thead>
 						<tr>
+							<th>ID</th>
 							<th>Skill</th>
 							<th>Value</th>
 						</tr>
@@ -259,9 +284,13 @@ var myChart= new Chart(ctx).Radar(d2data,{});
 						<tr>
 							<td></td>
 							<td></td>
+							<td></td>
 						</tr>
 						</tbody>			
-					</table>				
+					</table>
+					<div class="inline"><input type="text" id="dskillnamei" name="dskillname"/><input id="dskillvaluei" type="text" name="dskillvalue"/></div>
+					<button class="btn" id="btnDeleteRow">Delete row</button>	
+					<button class="btn" id="addrow">Add row</button>
 				</div>
 			</div>
 			<div class="d2container-r">
